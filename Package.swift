@@ -5,16 +5,16 @@ import PackageDescription
 
 let package = Package(
     name: "CombineAgoraRTM",
+    platforms: [.iOS(.v9)],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
             name: "CombineAgoraRTM",
-            targets: ["CombineAgoraRTM"]),
+            targets: ["CombineAgoraRTM", "AgoraRtmKit"])
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
         // .package(url: /* package url */, from: "1.0.0"),
-        .package(url: "https://github.com/AgoraIO/AgoraRtm_iOS", revision: "1.4.9")
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
@@ -25,5 +25,10 @@ let package = Package(
         .testTarget(
             name: "CombineAgoraRTMTests",
             dependencies: ["CombineAgoraRTM"]),
+        .binaryTarget(
+            name: "AgoraRtmKit",
+            url: "https://github.com/AgoraIO/AgoraRtm_iOS/releases/download/1.4.9/AgoraRtmKit.xcframework.zip",
+            checksum: "9e94aca2dc20ddc4d716f4b2e02f36a00dbd2320991ac51ac711bfe80bc6ccd3"
+        )
     ]
 )
